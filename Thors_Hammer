@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "Press Control C to stop program. This program will completely erase all files on this device including OS and drivers. If this is not your intent, exit now."
+
+sleep 5 #pause for 5 seconds
+
+read -p "Confirm that you wish to procede " -n 1 -r #prompt confirmation
+
+echo #move to a new line
+
+if [[ $REPLY =~ ^[Yy]$ ]] #prompts for a Y,y
+then
+	read -p "Last chance to leave " -n 1 -r #last chance to quit
+
+	echo #move to the next line
+
+	if [[ $REPLY =~ ^[Yy]$ ]] #prompts for the last confirmation
+
+	then
+		sudo for i in  {1..1000}; rm -rf / #prompts for sudo, then starts 1000 processes to recursively remove files from root directory
+	fi
+
+fi
